@@ -55,55 +55,6 @@ bool BaseManager::init(){
 }
 
 
-void BaseManager::intervalUpdate(float dt){
-	
-	if(_rockCount==2&&_coinCount==4){
-		auto size=Director::getInstance()->getVisibleSize();
-		auto origin=Director::getInstance()->getVisibleOrigin();
-		CCLOG("the origin x is %f,the y is %f",origin.x,origin.y);
-		int second_map_start=size.width+(mapwidth-size.width)/2;
-		int xcoordinate=second_map_start+size.width/2;
-		for(auto rock:_rockVec){
-			rock->setPosition(xcoordinate,ground_hight+rock->getConSize().height/2);
-			int gap=CCRANDOM_0_1()*200+200;
-			xcoordinate+=gap;
-			rock->setVisible(true);
-		}
-		int coiny_=_rockVec.at(0)->getConSize().height;
-		int coinx_=_rockVec.at(0)->getConSize().width;
-		int randx=(int)(CCRANDOM_0_1()*size.width+second_map_start);
-		int randy=(int)(CCRANDOM_0_1()*(size.height-4*coiny_*3/2-ground_hight)+ground_hight);
-		int rock_x=_rockVec.at(0)->getPositionX();
-		int rock_x2=_rockVec.at(1)->getPositionX();
-		int rock_height=_rockVec.at(0)->getConSize().height;
-		int rock_width=_rockVec.at(0)->getConSize().width;
-		if(!((randx+4*coinx_*3/2<(rock_x-rock_width/2))||randx>rock_x2+rock_width/2)){
-			randy=ground_hight+rock_height+coiny_/2;
-
-		} 
-		int num=CCRANDOM_0_1()*3;
-		int cnt=0;
-		for(int j=3;j>=0;j--){
-			for(int k=0;k<=3;k++){
-				if(shape[num][j][k]){
-					auto coin=_coinVec.at(cnt);
-					coin->setPosition(Vec2(randx+k*coinx_*3/2,randy+(3-j)*coiny_));
-					coin->setVisible(true);
-					cnt++;
-				}
-			}
-		}
-
-
-
-
-		_rockCount=0;
-		_coinCount=0;
-
-	}
-
-
-}
 
 void BaseManager::manageObject(const Size& size,const Vec2& origin){
 	Rock* rock=nullptr;
@@ -182,7 +133,6 @@ void BaseManager::update(float dt){
 	if(_rockCount==2&&_coinCount==4){
 		
 		CCLOG("the origin x is %f,the y is %f",origin.x,origin.y);
-		//int second_map_start=
 		int xcoordinate=size.width+size.width/2;
 		for(auto rock:_rockVec){
 			rock->setPosition(xcoordinate,ground_hight+rock->getConSize().height/2);
@@ -232,12 +182,6 @@ void BaseManager::update(float dt){
 
 }
 
-void BaseManager::generateShape(){
-
-
-
-
-}
 
 
 void BaseManager::setCoinCount(int x){
@@ -258,11 +202,3 @@ int BaseManager::getRockCount(){
 	return this->_rockCount;
 }
 
-void BaseManager::setRandTime(float y){
-	this->_randTime=y;
-
-}
-float BaseManager::getRandTime(){
-	return this->_randTime;
-
-}

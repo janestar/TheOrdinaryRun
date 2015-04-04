@@ -34,6 +34,5 @@ void Rock::initBody(){
 	phyBody->setCategoryBitmask(1);
 	phyBody->setCollisionBitmask(1);
 	phyBody->setContactTestBitmask(1);
-
 	this->setPhysicsBody(phyBody);
 }

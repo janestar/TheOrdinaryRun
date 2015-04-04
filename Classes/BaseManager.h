@@ -15,7 +15,6 @@
 #include "Coin.h"
 #include "Rock.h"
 
-#define mapwidth 1440
 #define coinNum 4
 #define coinTag 2
 #define rockNum 2
@@ -27,8 +26,8 @@ public:
 	CREATE_FUNC(BaseManager);
 	virtual bool init();
 	virtual void update(float dt);
-	virtual void intervalUpdate(float dt);
-	void generateShape();
+
+	
 
 private:
 	void manageObject(const Size&,const Vec2&);
@@ -36,13 +35,10 @@ private:
 	int  getCoinCount();
 	void setRockCount(int x);
 	int getRockCount();
-	void setRandTime(float y);
-	float getRandTime();
 	
 
 	Vector<Coin*> _coinVec;
 	Vector<Rock*> _rockVec;
-	float _randTime;
 	int _coinCount;
 	int _rockCount;
 
