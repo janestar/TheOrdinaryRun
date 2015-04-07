@@ -15,18 +15,19 @@
 USING_NS_CC;
 
 //all of the barriers like the coins,rock,etc are derived from this class
-class Base : public cocos2d::Node{
+class Base : public cocos2d::Node
+{
 public:
 	Base();
 	~Base();
-	void setSprite(cocos2d::Sprite* sprite);
-	cocos2d::Sprite* getSprite();
-    virtual void initBody()=0;
+	void setSprite(cocos2d::Sprite *sprite);
+	cocos2d::Sprite *getSprite();
+    virtual void initBody() = 0;
 	cocos2d::Size getConSize();
 	
 private:
-	cocos2d::Sprite* m_sprite;
+	cocos2d::Sprite *m_sprite;
 	
-};/**/
+};
 
 #endif

@@ -23,7 +23,6 @@ enum runnerState
 	running,
 	jumpUp,
 	jumpDown,
-	crouch
 };
 
 class Runner : public cocos2d::Node
@@ -67,33 +66,15 @@ public:
 		return _state;
 	}
 
-	/**
-	 * @brief    Getter of _runJumpSize attribute
-	 * @return    the jump and run "size" of the runner
-	 */
-	cocos2d::Size getRunJumpSize() const
-	{
-		return _runJumpSize;
-	}
-
-	/**
-	 * @brief    Getter of _crouchSize attribute
-	 * @return    the crouch "size" of the runner
-	 */
-	cocos2d::Size getCrouchSize() const
-	{
-		return _crouchSize;
-	}
-
 	void Run();
 
 	void Jump();
 
 private:
 	cocos2d::Sprite *_runnerSprite;
-	cocos2d::Size _runJumpSize;
-	cocos2d::Size _crouchSize;
 	runnerState _state;
+	bool _twoStepJump;
+	bool _superRush;
 };
 
 #endif

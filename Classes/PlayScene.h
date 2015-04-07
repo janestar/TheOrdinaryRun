@@ -66,6 +66,7 @@ public:
 private:
 	void initPhysicsWorld();
 	void addEventListeners();
+	void addContactListeners();
 
 private:
 	cocos2d::PhysicsWorld *_physicsWorld;
@@ -79,6 +80,8 @@ private:
 	cocos2d::Sprite *_bgSprite2;
 	cocos2d::Sprite *_groundSprite1;
 	cocos2d::Sprite *_groundSprite2;
+	
+    float _bgMoveSpeed;
 };
 
 #endif

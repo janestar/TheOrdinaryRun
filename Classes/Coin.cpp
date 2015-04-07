@@ -12,8 +12,10 @@
 
 USING_NS_CC;
 
-bool Coin::init(){
-	if(!Node::init()){
+bool Coin::init()
+{
+	if(!Node::init())
+	{
 		return false;
 	}
 
@@ -25,35 +27,36 @@ bool Coin::init(){
 	setSprite(sprite);
 	getSprite()->runAction(createAnimate(frameCache));
 	initBody();
+
 	return true;
 }
 
-Animate* Coin::createAnimate(SpriteFrameCache* frameCache){
-
-
-    SpriteFrame* frame = NULL;
+Animate* Coin::createAnimate(SpriteFrameCache* frameCache)
+{
+	SpriteFrame* frame = NULL;
 	Vector<SpriteFrame*>frameArray;
-    for(int i = 0; i <= 7; i++) {
-        frame = frameCache->spriteFrameByName(String::createWithFormat("coin%d.png", i)->getCString());
+	for(int i = 0; i <= 7; i++) 
+	{
+		frame = frameCache->spriteFrameByName(
+			String::createWithFormat("coin%d.png", i)->getCString());
 		frameArray.pushBack(frame);
+	} 
 
-    } 
- 
-    auto animation = Animation::createWithSpriteFrames(frameArray);
+	auto animation = Animation::createWithSpriteFrames(frameArray);
 
-    animation->setLoops(-1);
+	animation->setLoops(-1);
 
-    animation->setDelayPerUnit(0.1f);
+	animation->setDelayPerUnit(0.1f);
 
-    auto action = Animate::create(animation);
+	auto action = Animate::create(animation);
 
-    return action;
+	return action;
 }
 
-
-void Coin::initBody(){
-	
-	auto phyBody=PhysicsBody::createCircle(getSprite()->getContentSize().width/2);
+void Coin::initBody()
+{	
+	auto phyBody = PhysicsBody::createCircle(
+		getSprite()->getContentSize().width / 2);
 	phyBody->setDynamic(false);
 	phyBody->setCategoryBitmask(1);
 	phyBody->setCollisionBitmask(1);

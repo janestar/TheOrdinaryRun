@@ -12,8 +12,10 @@
 
 USING_NS_CC;
 
-bool Rock::init(){
-	if(!Node::init()){
+bool Rock::init()
+{
+	if( !Node::init() )
+	{
 		return false;
 	}
 
@@ -29,7 +31,8 @@ bool Rock::init(){
 	return true;
 }
 
-void Rock::initBody(){
+void Rock::initBody()
+{
 	auto phyBody = PhysicsBody::createEdgeBox(getSprite()->getContentSize());
 	phyBody->setCategoryBitmask(1);
 	phyBody->setCollisionBitmask(1);

@@ -14,12 +14,13 @@
 #include "Base.h"
 #include "cocos2d.h"
 
-class Rock : public Base{
+class Rock : public Base
+{
 public:
 	virtual bool init();
 	void initBody();
 	CREATE_FUNC(Rock);
 
-};/**/
+};
 
 #endif

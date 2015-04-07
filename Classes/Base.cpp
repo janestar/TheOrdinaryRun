@@ -12,22 +12,25 @@
 
 USING_NS_CC;
 
-Base::Base(){
+Base::Base()
+{
 	m_sprite = NULL;
 }
+
 Base::~Base(){};
 
-void Base::setSprite(Sprite* sprite){
+void Base::setSprite(Sprite* sprite)
+{
 	m_sprite = sprite; 
 	this->addChild(m_sprite);
 }
 
-Sprite* Base::getSprite(){
+Sprite* Base::getSprite()
+{
 	return m_sprite;
 }
 
-Size Base::getConSize(){
+Size Base::getConSize()
+{
 	return m_sprite->getContentSize();
 }
-
-

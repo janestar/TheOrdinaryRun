@@ -21,11 +21,15 @@ bool Runner::init()
 	_runnerSprite = Sprite::create();
 	_runnerSprite->setContentSize(Size(44, 52));
 
-	addChild(_runnerSprite);
-	_state = running;
-	initBody();
+	_twoStepJump = false;  // 二段跳标志
+	_superRush = false;  // 超级冲刺标志
 
-	scheduleUpdate();
+	addChild(_runnerSprite);
+	_state = running;  // 初始状态为奔跑
+
+	initBody();  // 初始化物理刚体
+
+	scheduleUpdate();  // 启动定时器
 
 	return true;
 }
@@ -48,8 +52,15 @@ void Runner::initBody()
 {
 	auto runnerBody = PhysicsBody::createBox(Size(44, 52), PHYSICSBODY_MATERIAL_DEFAULT);  
 	this->setPhysicsBody(runnerBody);  
-	getPhysicsBody()->getShape(0)->setRestitution(0.0f);
-	getPhysicsBody()->getShape(0)->setFriction(0.0f);
+
+	getPhysicsBody()->getShape(0)->setRestitution(0.0f);  // 设置抵抗力为0
+	getPhysicsBody()->getShape(0)->setFriction(0.0f);  // 设置摩擦力为0
+	getPhysicsBody()->setRotationEnable(false);  // 禁止刚体旋转
+
+	// 设置碰撞检测标识
+	getPhysicsBody()->setCategoryBitmask(1);
+	getPhysicsBody()->setCollisionBitmask(1);
+	getPhysicsBody()->setContactTestBitmask(1);
 }
 
 void Runner::update(float delta)
@@ -61,7 +72,7 @@ void Runner::update(float delta)
 		//_runnerSprite->stopAllActions();
 		//doAction("jumpDown");
 	}
-	else if (_state == jumpDown && velocity.y > 0.0)
+	else if (_state == jumpDown && velocity.y == 0.0)
 	{
 		_state = running;
 		//_runnerSprite->stopAllActions();
@@ -80,7 +91,7 @@ void Runner::Jump()
 	if (_state == running)
 	{
 		_state = jumpUp;
-		getPhysicsBody()->setVelocity(Vec2(0, 450));
+		getPhysicsBody()->setVelocity(Vec2(0, 600));
 		//_runnerSprite->stopAllActions();
 		//doAction("jumpUp");
 	}
