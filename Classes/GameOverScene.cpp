@@ -19,7 +19,7 @@ bool GameOver::init()
 	label->setPosition(_visibleSize.width/2, _visibleSize.height/2 + 40);
 
 	auto label2 = Label::create();
-	label2->setString("touch to the menu");
+	label2->setString("touch to the title");
 	label2->setSystemFontSize(25);
 	label2->setColor(Color3B::BLACK);
 	addChild(label2);

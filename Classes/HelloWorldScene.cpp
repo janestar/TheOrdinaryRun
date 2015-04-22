@@ -78,8 +78,9 @@ void HelloWorld::preLoadMusic()
 {
 	auto audioEngine = SimpleAudioEngine::getInstance();
 	audioEngine->preloadBackgroundMusic("putong_disco.wav");
-	audioEngine->preloadEffect("poi.wav");
-	audioEngine->preloadEffect("nico.wav");
+	audioEngine->preloadEffect("dash_sound.wav");
+	audioEngine->preloadEffect("jump.wav");
+	audioEngine->preloadEffect("pickup_coin.wav");
 }
 
 void HelloWorld::startGame()

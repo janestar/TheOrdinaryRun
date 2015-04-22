@@ -13,8 +13,10 @@
 
 #include "Runner.h"
 #include "FlashTool.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 bool Runner::init()
 {
@@ -92,6 +94,9 @@ void Runner::Jump()
 	{
 		_state = jumpUp;
 		getPhysicsBody()->setVelocity(Vec2(0, 600));
+		// 需要播放特效声音
+		auto audioEngine = SimpleAudioEngine::getInstance();
+		audioEngine->playEffect("jump.wav");
 		//_runnerSprite->stopAllActions();
 		//doAction("jumpUp");
 	}
